@@ -1,0 +1,226 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>*@
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <script src=" https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Index</title>
+    <style>
+        .err{
+            color:red;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <h2 class="text-center">Employee Registration Form</h2>
+                <h4>@ViewBag.msg</h4>
+                @*<form action="/Home/Index" method="post">*@
+                    @Html.ValidationSummary()
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="Name" id="Name" placeholder="Enter your Name" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label">Email Id</label>
+                            <input type="email" name="EmailId" id="EmailId" placeholder="Enter your emailid" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label">Contact No</label>
+                            <input type="number" name="ContactNo" id="ContactNo" placeholder="Enter your Mobile No" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label">State</label>
+                            <select name="State" id="State" class="form-control">
+                                <option value="">Select State</option>
+                                <option>UP</option>
+                                <option>MP</option>
+                                <option>HP</option>
+                                <option>Bihar</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label">City</label>
+                            <select name="City" id="City" class="form-control">
+                                <option value="">Select City</option>
+                                <option>Varansi</option>
+                                <option>Lucknow</option>
+                                <option>Mirzapur</option>
+                                <option>Chitrakoot</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label">Pin Code</label>
+                            <input type="number" name="PinCode" id="PinCode" placeholder="Enter your pin code" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label">Password</label>
+                            <input type="text" name="Password" id="Password" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="text" name="ConfirmPassword" id="ConfirmPassword" class="form-control" />
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="form-label">Address</label>
+                            <textarea name="Address" id="Address" placeholder="Enter your address" class="form-control"></textarea>
+                        </div>
+                        <div class="col-sm-6 pt-3">
+                            <input type="button" value="Register" class="btn btn-primary" />
+                            <a href="/Home/ShowAll">Show All Records</a>
+                        </div>
+                    </div>
+
+                @*</form>*@
+
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+</body>
+  
+
+
+</html>
+<script>
+    $(document).ready(function () {   
+        $(".btn").click(function () {
+            debugger;
+            var status = true;
+            var name, emailid, contactno, address, state, city, pincode, pass, cpass;
+            name = $("#Name").val();
+            emailid = $("#EmailId").val();
+            contactno = $("#ContactNo").val();
+            address = $("#Address").val();
+            state = $("#State").val();
+            city = $("#City").val();
+            pincode = $("#PinCode").val();
+            pass = $("#Password").val();
+            cpass = $("#ConfirmPassword").val();
+
+
+            //$(".err").remove();
+
+            //// validation Name...
+            //if (name.length == 0) {
+            //    $("#Name").after("<span class='err'>please enter your name</span>");
+            //    status = false;
+            //}
+            ////validate email...
+            //if (emailid.length == 0) {
+            //    $("#EmailId").after("<span class='err'>Please enter emailId</span>");
+            //    status = false;
+            //}
+            ////validate mobile number
+            //var regex = /^(0|91)?[6-9][0-9]{9}$/;
+            //if (contactno.length == 0) {
+            //    $("#ContactNo").after("<span class='err'>please enter mobile number.</span>");
+            //    status = false;
+            //}
+            //else if (regex.test(contactno) == false) {
+            //    $("#ContactNo").after("<span class='err'>Invalid Mobile number.</span>");
+            //    status = false;
+            //}
+            ////validate textarea
+            //if (address.length == 0) {
+            //    $("#Address").after("<span class='err'>Please enter your address</span>");
+            //    status = false;
+            //}
+            //else {
+            //    var ch, count = 1;
+            //    for (x = 0; x < address.length; x++) {
+            //        ch = address.charAt(x);
+            //        if (ch == ' ' || ch == ',' || ch == '.') {
+            //            count++
+            //        }
+            //    }
+            //    if (count < 3) {
+            //        $("#Address").after("<span class='err'>Please enter your full address</span>");
+            //        status = false;
+            //    }
+            //}
+            ////validate state..
+            //if (state.length == 0) {
+            //    $("#State").after("<span class='err'>please select state</span>");
+            //    status = false;
+            //}
+            ////validate city..
+            //if (city.length == 0) {
+            //    $("#City").after("<span class='err'>please select city</span>");
+            //    status = false;
+            //}
+            ////validation pincode...
+            //if (pincode.length == 0) {
+            //    $("#PinCode").after("<span class='err'>Please enter your pincode.</span>");
+            //    status = false;
+            //}
+            //else if (pincode.length != 6) {
+            //    $("#PinCode").after("<span class='err'>Please enter your correct pincode.</span>");
+            //    status = false;
+            //}
+
+            //// validation Password...
+            //if (pass.length == 0) {
+            //    $("#Password").after("<span class='err'>Please enter your password.</span>");
+            //    status = false;
+            //}
+            //else if (pass.length < 6) {
+            //    $("#Password").after("<span class='err'>maximux must be 6 charector .</span>");
+            //    status = false;
+            //}
+
+            //// validation Confirm Password...
+            //if (cpass.length == 0) {
+            //    $("#ConfirmPassword").after("<span class='err'>Please enter your confirm password.</span>");
+            //    status = false;
+            //}
+            //else if (pass != cpass) {
+            //    $("#ConfirmPassword").after("<span class='err'>Confirm password must be same password .</span>");
+            //    status = false;
+            //}
+            //return status;
+
+            var obj = {
+                Name: name,
+                EmailId: emailid,
+                ContactNo: contactno,
+                Address: address,
+                State: state,
+                City: city,
+                PinCode: pincode,
+                Password: pass,
+                ConfirmPassword: cpass
+            }
+
+                $.ajax({
+                    url: "/Home/Index",
+                    method: "POST",
+                    data: obj,
+                    dataType: "Json",
+                    ContentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        alert(data)
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                })
+          
+            
+
+        });
+    });
+</script>*
